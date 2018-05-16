@@ -1,0 +1,68 @@
+﻿@model ERPCRM.Models.PedidoItens
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Dados do pedido</h2>
+
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.pedido.nomeUsuario)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.pedido.nomeUsuario)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.pedido.statusDescricao)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.pedido.statusDescricao)
+    </dd>
+ </dl> 
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>
+                Produto
+            </th>
+            <th>
+                Quantidade
+            </th>
+            <th>
+                Valor (unitário)
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model.listPedidoItem)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.nomeProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.valor_unitario)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Dados", "Details", "PedidoItem", new { id = item.id }) |
+
+                    @if (Model.pedido.status == 0 && Model.pedido.ativo == true)
+                    {
+                        @Html.ActionLink("Alterar", "Edit", "PedidoItem", new { id = item.id }) |
+                        @Html.ActionLink("Apagar", "Delete", "PedidoItem", new { id = item.id })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,64 @@
+﻿@model ERPCRM.Models.PedidoItem
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Item do pedido</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nomeProduto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomeProduto)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.unidadeDescricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.unidadeDescricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valor_unitario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor_unitario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dte_ins)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dte_ins)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Voltar", "Index")
+</p>

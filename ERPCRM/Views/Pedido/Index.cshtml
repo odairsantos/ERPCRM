@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ERPCRM.Models.Pedido>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Novo Pedido", "Create", "Pedido", new { id = 1 })
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.nomeUsuario)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.statusDescricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dteIns)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ativo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.nomeUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.statusDescricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dteIns)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ativo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Dados", "Details", new { id=item.id }) |
+
+            @if(item.id_status != 1 && item.ativo == true)
+            { 
+                @Html.ActionLink("Apagar", "Delete", new { id=item.id })
+            }
+        </td>
+    </tr>
+}
+
+</table>
