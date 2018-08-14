@@ -25,14 +25,27 @@ namespace ERPCRM.Models
         /// </summary>
         public void AbrirConexao()
         {
+            bool abrirConexao = false;
             try
             {
-                if(conn.State == ConnectionState.Closed)
-                { 
+                if(conn == null)
+                {
+                    abrirConexao = true;
+                }
+                else
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        conn.Close();
+                        abrirConexao = true;       
+                    }
+                }
+
+                if (abrirConexao)
+                {
                     conn = new SqlConnection(strConexao);
                     conn.Open();
                 }
-                
             }
             catch (Exception ex)
             {

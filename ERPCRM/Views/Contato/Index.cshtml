@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ERPCRM.Models.Contato>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@if(ViewData["Erro"] !=null)
+{ 
+<div class="col-md-10">  
+    <p class="text-danger">@ViewData["Erro"]</p>
+</div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ContatoID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ContatoID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ContatoID })
+        </td>
+    </tr>
+}
+
+</table>
